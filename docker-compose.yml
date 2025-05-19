@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # ----- Servicio de MongoDB (para component-2) -----
+  mongoDB:
+    image: mongo:6.0
+    restart: always
+    container_name: prototipo1-mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # ----- API de component-2 -----
+  component-2-api:
+    build:
+      context: ./components/component-2
+      dockerfile: Dockerfile
+    image: component-2:latest
+    container_name: api-graphql
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongoDB:27017/db
+      SPRING_GRAPHQL_SCHEMA_LOCATION: classpath:/graphql/
+    depends_on:
+      - mongoDB
+
+  # ----- App de component-3 -----
+  component-3-app:
+    build:
+      context: ./components/component-3
+      dockerfile: Dockerfile
+    image: component-3:latest
+    container_name: frontend-nest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+volumes:
+  mongo_data:
