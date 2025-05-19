@@ -1,0 +1,6 @@
+[submodule "components/component-2"]
+	path = components/component-2
+	url = https://github.com/Swarch2F/component-2.git
+[submodule "components/component-3"]
+	path = components/component-3
+	url = https://github.com/Swarch2F/component-3.git
