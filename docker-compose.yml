@@ -69,16 +69,16 @@ services:
       - mongoDB
 
   # ----- App de component-3 -----
-#  component-3-app:
-#    build:
-#      context: ./components/component-3
-##      dockerfile: Dockerfile
- #   image: component-3:latest
- #   container_name: frontend-nest
- ##   ports:
-  #    - "3000:3000"
-  #  environment:
-  #    - NODE_ENV=production
+  component-3-app:
+    build:
+      context: ./components/component-3
+      dockerfile: Dockerfile
+    image: component-3:latest
+    container_name: frontend-nest
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
 
 volumes:
   mongo_data:
