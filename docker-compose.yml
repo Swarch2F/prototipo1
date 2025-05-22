@@ -23,7 +23,8 @@ services:
       - LOAD_INITIAL_DATA=true
     depends_on:
       - gx_db_estcur
-
+    networks:
+      - sia_network
 #--- Base de datos Relacional Postgres---
   gx_db_estcur:
     container_name: gx_db_estcur
@@ -40,7 +41,8 @@ services:
       - POSTGRES_LC_CTYPE=es_CO.utf8
     ports:
       - "5432:5432"
-
+    networks:
+      - sia_network
 
   # ----- Base de datos NoSQL MongoDB -----
   gx_db_proasigcal:
@@ -82,4 +84,6 @@ services:
 volumes:
   mongo_data:
   postgres_data:
-
+networks:
+  sia_network:
+    driver: bridge 
