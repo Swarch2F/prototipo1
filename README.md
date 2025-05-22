@@ -19,7 +19,7 @@ git submodule add https://github.com/Swarch2F/component-2.git components/compone
 git submodule add https://github.com/Swarch2F/component-3.git components/component-3
 ```
 
-Para actualizar los submódulos en caso de modificaciones (solo referencia):
+## Actualización de submódulos recursivamente (por primer vez una vez clonado el proyecto):
 
 ```bash
 git submodule update --init --recursive
